@@ -1,0 +1,59 @@
+<section class="vh-100  d-flex">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                    class="img-fluid" alt="Sample image" />
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form [formGroup]="registerForm" (ngSubmit)="save()">
+                    <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start
+                    my-4">
+                        <h3 class="fw-normal mb-0 me-3">Sign in with</h3>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Email Address</label>
+                        <input type="text" formControlName="email" class="form-control form-control-lg"
+                            placeholder="Enter username" />
+                        <ng-container
+                            *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)">
+                            <small class="text-danger" *ngIf="registerForm.get('email')?.errors!['required']">
+                                Email is required
+                            </small>
+                            <small class="text-danger" *ngIf="registerForm.get('email')?.errors!['email']">
+                                Enter a valid email address
+                            </small>
+                        </ng-container>
+                    </div>
+
+
+                    <div class="form-outline mb-3">
+                        <label class="form-label">Password</label>
+                        <input formControlName="password" type="password" class="form-control form-control-lg"
+                            placeholder="Enter password" />
+                        <ng-container
+                            *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)">
+                            <small class="text-danger" *ngIf="registerForm.get('password')?.errors!['required']">
+                                password is required
+                            </small>
+                            <small class="text-danger" *ngIf="registerForm.get('password')?.errors!['minlength']">
+                                Minimum of 8 characters required
+                            </small>
+                            <small class="text-danger" *ngIf="registerForm.get('password')?.errors!['hasInvalid']">
+                               Invalid Credentials
+                            </small>
+                        </ng-container>
+
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2 d-grid">
+                        <button type='submit' class="btn btn-primary">Login</button>
+                        <p class="text-center mt-2">New User: <a style="cursor: pointer; margin-left: 8px; color: blue;"
+                                routerLink="/auth/register">Register</a></p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

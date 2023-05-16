@@ -1,0 +1,42 @@
+<div class="container">
+    <h5 class="mb-3">Add Book</h5>
+    <form [formGroup]="bookForm" (ngSubmit)="addBook()">
+        <div class="form-outline mb-4">
+            <label class="form-label">Book Name</label>
+            <input type="text" formControlName="bookName" class="form-control form-control-lg" placeholder="bookName" />
+            <ng-container
+                *ngIf="bookForm.get('bookName')?.invalid && (bookForm.get('bookName')?.touched || bookForm.get('bookName')?.dirty)">
+                <small class="text-danger" *ngIf="bookForm.get('bookName')?.errors!['required']">
+                    bookName is required
+                </small>
+            </ng-container>
+        </div>
+        <div class="form-outline mb-4">
+            <label class="form-label">Book description</label>
+            <input type="text" formControlName="bookdescription" class="form-control form-control-lg"
+                placeholder="bookdescription" />
+            <ng-container
+                *ngIf="bookForm.get('bookdescription')?.invalid && (bookForm.get('bookdescription')?.touched || bookForm.get('bookdescription')?.dirty)">
+                <small class="text-danger" *ngIf="bookForm.get('bookdescription')?.errors!['required']">
+                    bookdescription is required
+                </small>
+            </ng-container>
+        </div>
+        <div class="form-outline mb-4">
+            <label class="form-label">Price</label>
+            <input type="text" formControlName="price" class="form-control form-control-lg" placeholder="price" />
+            <ng-container
+                *ngIf="bookForm.get('price')?.invalid && (bookForm.get('price')?.touched || bookForm.get('price')?.dirty)">
+                <small class="text-danger" *ngIf="bookForm.get('price')?.errors!['required']">
+                    price is required
+                </small>
+            </ng-container>
+        </div>
+
+
+        <div class="text-center text-lg-start mt-4 pt-2 d-grid">
+            <button type='submit' class="btn btn-primary">Save</button>
+        </div>
+
+    </form>
+</div>
